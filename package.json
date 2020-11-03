@@ -1,0 +1,22 @@
+{
+  "name": "micro-expressions",
+  "version": "1.0.0",
+  "description": "Lightweight library for parsing of string-based expressions with customizable operator behavior",
+  "main": "index.js",
+  "scripts": {
+    "start": "./index.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "expressions",
+    "lightweight",
+    "string-based",
+    "operators"
+  ],
+  "author": "Dan Borufka",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.20",
+    "shlex": "^2.0.2"
+  }
+}
