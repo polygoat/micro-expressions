@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-const { MicroExpression } = require('../index');
 
 describe('MicroExpression', () => {
+	const { MicroExpression } = require('../index');
+
 	test('Passing through of strings and numbers: "test", 6, and 6.5', () => {
 		let str_result = new MicroExpression('test').render();
 		let int_result = new MicroExpression('6').render();
@@ -45,5 +46,44 @@ describe('MicroExpression', () => {
 		expect(result).toBe(false);
 		result = new MicroExpression('3 nin entries').render_with({ entries: [9,6,8] });
 		expect(result).toBe(true);
+	});
+});
+
+describe('MongoExpression', () => {
+	const { MongoExpression } = require('../examples/mongo-expression.js');
+
+	test('Passing through of numbers: 6 and 6.5', () => {
+		let int_result = new MongoExpression('6').render();
+		let float_result = new MongoExpression('6.5').render();
+
+		expect(int_result).toBe(6);
+		expect(float_result).toBe(6.5);
+	});
+
+	test('Simple field existence check: "foo" turns to { foo: { $exists: 1 } }, { foo: 1 }', () => {
+		let $expression = new MongoExpression('foo');
+		$expression.render();
+		expect($expression.selector).toEqual({ foo: { $exists: 1 } });
+		expect($expression.projection).toEqual({ foo: 1 });
+	});
+
+	test('Comparison operation: "foo.bar=4" turns to { "foo.bar": 4 }', () => {
+		let selector = new MongoExpression('foo.bar=4').render();
+		expect(selector).toEqual({ 'foo.bar': 4 });
+	});
+
+	test('Comparison operation: "foo.bar>4" turns to { "foo.bar": { $gt: 4 } }', () => {
+		let selector = new MongoExpression('foo.bar >4').render();
+		expect(selector).toEqual({ 'foo.bar': { $gt: 4 } });
+	});
+
+	test('Comparison operation: "foo.bar >= 4" turns to { "foo.bar": { $gte: 4 } }', () => {
+		let selector = new MongoExpression('foo.bar>= 4').render();
+		expect(selector).toEqual({ 'foo.bar': { $gte: 4 } });
+	});
+
+	test('Special operations: "foo.bar in entries" turns to { "foo.bar": { $in: ["A", 5, 99] } }', () => {
+		let selector = new MongoExpression('foo.bar in entries').render_with({ entries: ['A', 5, 99] });
+		expect(selector).toEqual({ 'foo.bar': { $in: ['A', 5, 99] } });
 	});
 });
