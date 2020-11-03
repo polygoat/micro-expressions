@@ -16,7 +16,6 @@
   "author": "Dan Borufka",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.20",
-    "shlex": "^2.0.2"
+    "lodash": "^4.17.20"
   }
 }

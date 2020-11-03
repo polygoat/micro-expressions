@@ -50,8 +50,8 @@ The `override_operators` method takes no arguments, but **must return an object*
 
 ```javascript
 {
-	'=': function(left, right) {
-		return left === right;
+	'!': function(left, right) {
+		return !right;
 	}
 }
 ```
@@ -95,12 +95,12 @@ _.each(steps, (step, i) => {
 	}
 });
 
-console.log(`\nThe outcome is ${message}.`);
+console.log('The outcome is', message);
 ```
 
 The output will be:
 ```shell
-The outcome is negative.
+The outcome is negative
 ```
 
 Here is an example of **extending MicroExpression**:
