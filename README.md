@@ -27,6 +27,12 @@ Use `render_with( data_container )` to render all templates using `data_containe
 new MicroExpression(expression).render_with( data_container );
 ```
 
+As MicroExpression is using lodash's get helper, it supports object paths in _dot notation_:
+
+```javascript
+new MicroExpression('foo.bar < 10').render_with({ foo: { bar: 4 } });
+```
+
 ## Extending
 
 To create micro expressions with your own set of operators, you can extend the MicroExpression class and overwrite the default behavior by declaring an `override_operators()` and/or a `get( expression )` method.
