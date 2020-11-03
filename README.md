@@ -68,9 +68,8 @@ You can declare a method `on_render` that gets passed the current rendering resu
 
 In the following example, I used the **MicroExpression** class to parse conditions loaded from a JSON file:
 
+**[steps.json]**
 ```json
-steps.json
-
 [
 	{
 		"if": "answer=yes",
@@ -83,28 +82,25 @@ steps.json
 ]
 ```
 
+**[index.js]**
 ```javascript
 let message = 'maybe.';
 const steps = require('./steps.json');
 const answer = 'no';
 
 _.each(steps, (step, i) => {
-	const conditional = new MicroExpression(step.if, { answer });
-	if(conditional.result) {
+	const condition = new MicroExpression(step.if);
+	if(condition.render_with({ answer })) {
 		message = step.message;
 	}
-	console.log(i + '. message =', message);
 });
 
-console.log('\nThe final message is:', message + '.');
+console.log(`\nThe outcome is ${message}.`);
 ```
 
 The output will be:
 ```shell
-0. message = maybe
-1. message = negative
-
-The final message is: negative.
+The outcome is negative.
 ```
 
 Here is an example of **extending MicroExpression**:
