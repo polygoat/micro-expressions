@@ -23,7 +23,7 @@ describe('MicroExpression', () => {
 		expect(result).toBe(true);
 	});
 
-	test('Comparisons: =, <, !=, <=, >, >= from { "foo": 4 }', () => {
+	test('Comparisons: =, <, !=, <=, >, >= for { "foo": 4 }', () => {
 		let result = new MicroExpression('foo = 4').render_with({ foo: 4 });
 		expect(result).toBe(true);
 		result = new MicroExpression('foo< 5').render_with({ foo: 4 });
@@ -35,6 +35,15 @@ describe('MicroExpression', () => {
 		result = new MicroExpression('foo<=5').render_with({ foo: 4 });
 		expect(result).toBe(true);
 		result = new MicroExpression('foo!=3').render_with({ foo: 4 });
+		expect(result).toBe(true);
+	});
+
+	test('Special operators: in and nin for { entries: [9, 6, 8] }', () => {
+		let result = new MicroExpression('6 in entries').render_with({ entries: [9,6,8] });
+		expect(result).toBe(true);
+		result = new MicroExpression('3 in entries').render_with({ entries: [9,6,8] });
+		expect(result).toBe(false);
+		result = new MicroExpression('3 nin entries').render_with({ entries: [9,6,8] });
 		expect(result).toBe(true);
 	});
 });
