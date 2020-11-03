@@ -7,7 +7,7 @@ describe('MicroExpression', () => {
 	test('Passing through of strings and numbers: "test", 6, and 6.5', () => {
 		let str_result = new MicroExpression('test').render();
 		let int_result = new MicroExpression('6').render();
-		let float_result = new MicroExpression('6.5').render();
+		let float_result = new MicroExpression('6.5').render_with({});
 
 		expect(str_result).toBe('test');
 		expect(int_result).toBe(6);
@@ -27,7 +27,7 @@ describe('MicroExpression', () => {
 	test('Comparisons: =, <, !=, <=, >, >= for { "foo": 4 }', () => {
 		let result = new MicroExpression('foo = 4').render_with({ foo: 4 });
 		expect(result).toBe(true);
-		result = new MicroExpression('foo< 5').render_with({ foo: 4 });
+		result = new MicroExpression('foo< 5', { foo: 4 }).result;
 		expect(result).toBe(true);
 		result = new MicroExpression('foo >4').render_with({ foo: 4 });
 		expect(result).toBe(false);

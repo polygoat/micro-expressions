@@ -21,11 +21,14 @@ class MicroExpression {
 		operators: []
 	};
 
-	constructor(query, operators) {
+	constructor(query, data=undefined) {
 		if('override_operators' in this) {
 			this.operators = this.override_operators();
 		}
 		this.parse(query);
+		if(!_.isUndefined(data)) {
+			this.render_with(data);
+		}
 	}
 
 	get(expression) {
