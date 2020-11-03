@@ -5,7 +5,7 @@ Lightweight and easily extensible string-based expression engine
 
 ## Goals & Design
 
-I created this tiny project to read (and parse) collections from JSON files that contained simple conditionals. As my architecture grew, I started using the same expressions for almost anything – even to query several databases. Keeping one simplistic language throughout your ecosystem simplifies both development and maintenance.
+I created this tiny project to read (and parse) collections from JSON files that contained simple conditionals. As my architecture grew, I started using the same expressions for almost anything – even to query several databases. Keeping one simplistic language throughout my ecosystem simplified both development and maintenance for me.
 
 ## Installation
 
@@ -16,6 +16,16 @@ $ npm install micro-expression
 ```
 
 ## Usage
+Newly created MicroExpressions take one argument: the _`expression`_.
+The input is being parsed automagically and turned into functions that take a data container as argument for rendering.
+```javascript
+new MicroExpression( expression );
+```
+Use `render_with( data_container )` to render all templates using `data_container` as context.
+
+```javascript
+new MicroExpression(expression).render_with( data_container );
+```
 
 ## Extending
 
@@ -25,8 +35,13 @@ To create micro expressions with your own set of operators, you can extend the M
 const { MicroExpression } = require('micro-expression');
 
 class MyExpression extends MicroExpression {
-	override_operators() 	{ ... }
-	get(expression) 		{ ... }
+	override_operators() { 
+		... 
+	}
+
+	get(expression) { 
+		... 
+	}
 }
 ```
 ### Overriding Operators
@@ -41,7 +56,58 @@ The `override_operators` method takes no arguments, but **must return an object*
 }
 ```
 
+### Overriding Templating
+
+The `get` method takes one argument: _expression_. ###TODO
+
+### Hooking into `.render` and `.render_with`
+
+You can declare a method `on_render` that gets passed the current rendering results as single argument.
+
 ## Examples
+
+In the following example, I used the **MicroExpression** class to parse conditions loaded from a JSON file:
+
+```json
+steps.json
+
+[
+	{
+		"if": "answer=yes",
+		"message": "affirmative."
+	}, 
+	{
+		"if": "answer=no",
+		"message": "negative."
+	}
+]
+```
+
+```javascript
+let message = 'maybe.';
+const steps = require('./steps.json');
+const answer = 'no';
+
+_.each(steps, (step, i) => {
+	const conditional = new MicroExpression(step.if, { answer });
+	if(conditional.result) {
+		message = step.message;
+	}
+	console.log(i + '. message =', message);
+});
+
+console.log('\nThe final message is:', message + '.');
+```
+
+The output will be:
+```shell
+0. message = maybe
+1. message = negative
+
+The final message is: negative.
+```
+
+Here is an example of **extending MicroExpression**:
 
 ```javascript
 class MyExpression extends MicroExpression {
