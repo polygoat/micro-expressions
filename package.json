@@ -1,6 +1,6 @@
 {
   "name": "micro-expressions",
-  "version": "1.0.1",
+  "version": "1.0.12",
   "description": "Lightweight library for parsing of string-based expressions with customizable operator behavior",
   "main": "index.js",
   "scripts": {
