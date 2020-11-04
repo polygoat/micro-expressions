@@ -12,7 +12,11 @@ Lightweight, fast and easily extensible string interpolation engine
 
 ## Goals & Design
 
+[Template literals][], a.k.a. template strings, string interpolation, or sometimes simply called expressions, are part of ECMAScript for development, but can not be parsed during runtime.
+
 I created this tiny project to read (and parse) collections from JSON files that contained simple conditionals. As my architecture grew, I started using the same expressions for almost anything – even to query several databases. Keeping one simplistic language throughout my ecosystem simplified both development and maintenance for me.
+
+[Template literals]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 
 ## Installation
 
