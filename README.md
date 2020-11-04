@@ -12,7 +12,7 @@ Lightweight, fast and easily extensible string interpolation engine
 
 ## Goals & Design
 
-[Template literals][], a.k.a. template strings, string interpolation, or sometimes simply called expressions, are part of ECMAScript for development, but can not be parsed during runtime. Python developers might know it as [String formats][] or "F-Strings"
+[Template literals][], a.k.a. template strings, string interpolation, or sometimes simply called expressions, are part of ECMAScript for development, but can not be parsed during runtime. The Pythoneers amongst you might know this paradigm as [String formats][] or "F-Strings".
 
 I created this tiny project to read (and parse) collections from JSON files that contained simple conditionals. As my architecture grew, I started using the same expressions for almost anything – even to query several databases. Keeping one simplistic language throughout my ecosystem simplified both development and maintenance for me.
 
