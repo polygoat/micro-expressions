@@ -23,6 +23,7 @@
     "lodash": "^4.17.20"
   },
   "devDependencies": {
-    "jest": "^26.6.2"
+    "jest": "^26.6.2",
+    "jest-cli": "^26.6.2"
   }
 }
