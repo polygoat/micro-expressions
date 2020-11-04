@@ -4,6 +4,7 @@ Micro Expressions for NodeJS
 Lightweight and easily extensible string-based expression engine
 
 [![npm version][npm-badge]][npm]
+
 [npm]: https://www.npmjs.org/package/micro-expressions
 [npm-badge]: https://img.shields.io/npm/v/micro-expressions.svg?style=flat-square
 
