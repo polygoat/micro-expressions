@@ -3,6 +3,10 @@ Micro Expressions for NodeJS
 
 Lightweight and easily extensible string-based expression engine
 
+[![npm version][npm-badge]][npm]
+[npm]: https://www.npmjs.org/package/micro-expressions
+[npm-badge]: https://img.shields.io/npm/v/micro-expressions.svg?style=flat-square
+
 ## Goals & Design
 
 I created this tiny project to read (and parse) collections from JSON files that contained simple conditionals. As my architecture grew, I started using the same expressions for almost anything – even to query several databases. Keeping one simplistic language throughout my ecosystem simplified both development and maintenance for me.
