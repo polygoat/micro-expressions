@@ -2,4 +2,4 @@ after_install:
   - npm i
 language: node_js
 node_js:
-  - 8
+  - 12
