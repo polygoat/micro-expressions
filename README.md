@@ -1,7 +1,7 @@
 Micro Expressions for NodeJS
 ============================
 
-Lightweight and easily extensible string-based expression engine
+Lightweight, fast and easily extensible string interpolation engine
 
 [![npm][npm-badge]][npm] [![npm][travis-badge]][npm]
 
