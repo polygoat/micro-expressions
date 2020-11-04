@@ -133,3 +133,6 @@ Make sure you check out the [subclass MongoExpression][] and [the tests][] to se
 
 License
 -------
+[MIT License][]
+
+[MIT License]: https://github.com/polygoat/micro-expression/blob/main/LICENSE
