@@ -1,1 +1,3 @@
+before_install:
+  - npm i -g jest
 language: node_js
