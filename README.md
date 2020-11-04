@@ -66,7 +66,19 @@ The `override_operators` method takes no arguments, but **must return an object*
 
 ### Overriding Templating
 
-The `get` method takes one argument: _expression_. ###TODO
+The `get` method takes one argument: _expression_. All operands are passed to this method before the entire expression is being evaluated.
+
+In its simplest form, you can override `get` like so:
+
+```javascript
+const { MicroExpression } = require('micro-expressions');
+
+class SQLExpression extends MicroExpression {
+	get(expression) {
+		return data => data[expression] || expression;
+	}
+}
+````
 
 ### Hooking into `.render` and `.render_with`
 
