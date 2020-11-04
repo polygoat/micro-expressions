@@ -28,7 +28,34 @@ The input is being parsed automagically and turned into functions that take a da
 ```javascript
 const { MicroExpression } = require('micro-expressions');
 
-new MicroExpression( expression );
+const data = {
+	name: 'Dan',
+	foo: { 
+		bar: 4 
+	},
+	group: ['Vlad', 'Bartmoss'],
+	test: 8
+};
+
+console.log( new MicroExpression("foo.bar").render_with(data) );
+// outputs 4
+
+console.log( new MicroExpression("foo.bar < 3").render_with(data) );
+// outputs false
+
+console.log( new MicroExpression("foo.bar >= 4").render_with(data) );
+// outputs true
+
+console.log( new MicroExpression("foo.bar!=test").render_with(data) );
+// outputs true
+
+console.log( new MicroExpression("name in group").render_with(data) );
+// outputs false
+
+console.log( new MicroExpression("Vlad in group").render_with(data) );
+// outputs true
+
+
 ```
 Use `render_with( data_container )` to render all templates using `data_container` as context.
 
