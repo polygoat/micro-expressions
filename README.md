@@ -16,13 +16,15 @@ I created this tiny project to read (and parse) collections from JSON files that
 Install using npm:
 
 ```shell
-$ npm install micro-expression
+$ npm install micro-expressions
 ```
 
 ## Usage
 Newly created MicroExpressions take one argument: the _`expression`_.
 The input is being parsed automagically and turned into functions that take a data container as argument for rendering.
 ```javascript
+const { MicroExpression } = require('micro-expressions');
+
 new MicroExpression( expression );
 ```
 Use `render_with( data_container )` to render all templates using `data_container` as context.
@@ -42,7 +44,7 @@ new MicroExpression('foo.bar < 10').render_with({ foo: { bar: 4 } });
 To create micro expressions with your own set of operators, you can extend the MicroExpression class and overwrite the default behavior by declaring an `override_operators()` and/or a `get( expression )` method.
 
 ```javascript
-const { MicroExpression } = require('micro-expression');
+const { MicroExpression } = require('micro-expressions');
 
 class MyExpression extends MicroExpression {
 	override_operators() { 
@@ -68,7 +70,19 @@ The `override_operators` method takes no arguments, but **must return an object*
 
 ### Overriding Templating
 
-The `get` method takes one argument: _expression_. ###TODO
+The `get` method takes one argument: _expression_. All operands are passed to this method before the entire expression is being evaluated.
+
+In its simplest form, you can override `get` like so:
+
+```javascript
+const { MicroExpression } = require('micro-expressions');
+
+class SQLExpression extends MicroExpression {
+	get(expression) {
+		return data => data[expression] || expression;
+	}
+}
+````
 
 ### Hooking into `.render` and `.render_with`
 
@@ -135,3 +149,6 @@ Make sure you check out the [subclass MongoExpression][] and [the tests][] to se
 
 License
 -------
+[MIT License][]
+
+[MIT License]: https://github.com/polygoat/micro-expression/blob/main/LICENSE
