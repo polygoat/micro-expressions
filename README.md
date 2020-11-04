@@ -3,7 +3,7 @@ Micro Expressions for NodeJS
 
 Lightweight and easily extensible string-based expression engine
 
-[![npm][npm-badge]][npm][![npm][travis-badge]][npm]
+[![npm][npm-badge]][npm] [![npm][travis-badge]][npm]
 
 
 [npm]: https://www.npmjs.org/package/micro-expressions
