@@ -2,6 +2,10 @@
   "name": "micro-expressions",
   "version": "1.0.12",
   "description": "Lightweight library for parsing of string-based expressions with customizable operator behavior",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/polygoat/micro-expressions.git"
+  }
   "main": "index.js",
   "scripts": {
     "start": "./index.js",
