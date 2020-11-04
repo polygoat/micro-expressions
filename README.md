@@ -3,10 +3,12 @@ Micro Expressions for NodeJS
 
 Lightweight and easily extensible string-based expression engine
 
-[![npm][npm-badge]][npm]
+[![npm][npm-badge]][npm][![npm][travis-badge]][npm]
+
 
 [npm]: https://www.npmjs.org/package/micro-expressions
 [npm-badge]: https://img.shields.io/npm/v/micro-expressions.svg?style=flat-square
+[travis-badge]: https://api.travis-ci.com/polygoat/micro-expressions.svg?branch=main&status=passed
 
 ## Goals & Design
 
