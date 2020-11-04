@@ -5,7 +5,7 @@
   "repository": {
     "type" : "git",
     "url" : "https://github.com/polygoat/micro-expressions.git"
-  }
+  },
   "main": "index.js",
   "scripts": {
     "start": "./index.js",
