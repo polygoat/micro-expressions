@@ -123,6 +123,18 @@ class SQLExpression extends MicroExpression {
 
 You can declare a method `on_render` that gets passed the current rendering results as single argument.
 
+## Testing
+
+This package comes with a set of standard JEST cases located in `[tests/all.test.js][]`
+
+Run them using:
+```bash
+$ npm test
+```
+
+[tests/all.test.js]: https://github.com/polygoat/micro-components-py/tree/main/tests/all.test.js
+
+
 ## Examples
 
 In the following example, I used the **MicroExpression** class to parse conditions loaded from a JSON file:
@@ -181,6 +193,7 @@ Make sure you check out the [subclass MongoExpression][] and [the tests][] to se
 
 [subclass MongoExpression]: https://github.com/polygoat/micro-expression/blob/main/examples/mongo-expression.js
 [the tests]: https://github.com/polygoat/micro-expression/blob/main/tests/all.test.js
+
 
 License
 -------
